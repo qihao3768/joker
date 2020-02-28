@@ -4,12 +4,27 @@ import android.util.Log;
 
 import com.seven.joker.BuildConfig;
 
+/*
+log工具类，只在debug模式下显示日志
+ */
 public class LogUtil {
-    public static boolean isDebug = BuildConfig.DEBUG;
+    private static boolean isDebug = BuildConfig.DEBUG;
+    private final static String tag = "qihao";
 
-    public static void d(String tag, String msg) {
+    public static void print(String type, String msg) {
         if (isDebug) {
-            Log.d(tag, msg);
+            switch (type){
+                case "d":
+                    Log.d(tag, msg);
+                    break;
+                case "e":
+                    Log.d(tag, msg);
+                    break;
+                case "i":
+                    Log.d(tag, msg);
+                    break;
+            }
+
         }
     }
 }
