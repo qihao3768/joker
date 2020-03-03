@@ -14,7 +14,7 @@ public class QiApplication extends Application {
     public static QiApplication getInstance() {
         return instance;
     }
-
+ 
     @Override
     public void onCreate() {
         super.onCreate();
@@ -22,7 +22,7 @@ public class QiApplication extends Application {
         UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, "");
         MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
         //初始化bugly
-        CrashReport.initCrashReport(getApplicationContext(), BUGLY_ID, true);
+        CrashReport.initCrashReport(getApplicationContext(), BUGLY_ID, false);
     }
 
     @Override
