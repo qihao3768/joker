@@ -47,7 +47,7 @@ public class BottomTabs extends BottomNavigationView {
         setItemTextColor(colorStateList);
         setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         setSelectedItemId(bottomTab.selectTab);
-//添加按钮图标
+        //添加按钮图标
         for (int i = 0; i < tabs.size(); i++) {
             BottomTab.Tabs tab = tabs.get(i);
             if (!tab.enable) {
