@@ -12,7 +12,7 @@
         tools:ignore="ProtectedPermissions" />
 
     <application
-        android:name=".QiApplication"
+        android:name=".configs.QiApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

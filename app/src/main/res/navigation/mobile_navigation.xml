@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.seven.joker.ui.dashboard.DashboardFragment"
+        android:name="com.seven.joker.ui.sofa.SofaFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_sofa" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.seven.joker.ui.notifications.NotificationsFragment"
+        android:name="com.seven.joker.ui.find.FindFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_find" />
 </navigation>

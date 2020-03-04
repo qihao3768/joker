@@ -1,4 +1,4 @@
-package com.seven.joker.ui.dashboard;
+package com.seven.joker.ui.sofa;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,17 +15,17 @@ import androidx.lifecycle.ViewModelProviders;
 import com.seven.annotation.FragmentDestination;
 import com.seven.joker.R;
 
-@FragmentDestination(pageUrl = "main/tabs/dash", isStart = false,isLogin = false)
+@FragmentDestination(pageUrl = "main/tabs/sofa", isStart = false,isLogin = false)
 
-public class DashboardFragment extends Fragment {
+public class SofaFragment extends Fragment {
 
-    private DashboardViewModel dashboardViewModel;
+    private SofaViewModel dashboardViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         dashboardViewModel =
-                ViewModelProviders.of(this).get(DashboardViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
+                ViewModelProviders.of(this).get(SofaViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_sofa, container, false);
         final TextView textView = root.findViewById(R.id.text_dashboard);
         dashboardViewModel.getText().observe(this, new Observer<String>() {
             @Override

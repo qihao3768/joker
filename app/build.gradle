@@ -61,11 +61,12 @@ dependencies {
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'com.alibaba:fastjson:1.2.59'
     //自定义注解处理器依赖
     implementation project(":annotation")
     annotationProcessor project(":compiler")
     //leakCanary内存泄漏检测
-    //debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.2'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.2'
     //umeng统计、推送
     implementation 'com.umeng.umsdk:analytics:8.0.0'
     implementation 'com.umeng.umsdk:common:2.0.0'
