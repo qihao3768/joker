@@ -17,12 +17,3 @@ public class Cache implements Serializable {
     public byte[] data;
 
 }
-
-//public class ForeignTable implements Serializable {
-//    @PrimaryKey
-//    @NonNull
-//    public String foreign_key;
-//
-//    //@ColumnInfo(name = "_data")
-//    public byte[] foreign_data;
-//}
