@@ -1,7 +1,6 @@
 package com.seven.joker.configs;
 
 import android.content.ComponentName;
-import android.content.Context;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.ActivityNavigator;
@@ -11,6 +10,7 @@ import androidx.navigation.NavGraphNavigator;
 import androidx.navigation.NavigatorProvider;
 import androidx.navigation.fragment.FragmentNavigator;
 
+import com.seven.common.QiApplication;
 import com.seven.joker.model.Destination;
 
 import java.util.HashMap;

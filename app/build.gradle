@@ -65,12 +65,8 @@ dependencies {
     //自定义注解处理器依赖
     implementation project(":annotation")
     annotationProcessor project(":compiler")
-    //leakCanary内存泄漏检测
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.2'
-    //umeng统计、推送
-    implementation 'com.umeng.umsdk:analytics:8.0.0'
-    implementation 'com.umeng.umsdk:common:2.0.0'
-    //bugly崩溃上报、热修复
-    implementation 'com.tencent.bugly:crashreport:3.1.7'
+    implementation project(':network')
+    implementation project(':common')
+
 
 }
