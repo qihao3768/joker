@@ -1,7 +1,9 @@
 package com.seven.joker.configs;
 
 import android.content.ComponentName;
+import android.content.Context;
 
+import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.ActivityNavigator;
 import androidx.navigation.NavController;
 import androidx.navigation.NavGraph;
@@ -14,9 +16,10 @@ import com.seven.joker.model.Destination;
 import java.util.HashMap;
 
 public class NavGraphBuider {
-    public static void build(NavController navController) {
+    public static void build(NavController navController, FragmentActivity context, int containerId) {
         NavigatorProvider provider = navController.getNavigatorProvider();
-        FragmentNavigator fragmentNavigator = provider.getNavigator(FragmentNavigator.class);
+        FixFragmentNavigator fragmentNavigator = new FixFragmentNavigator(context, context.getSupportFragmentManager(), containerId);
+        provider.addNavigator(fragmentNavigator);
         ActivityNavigator activityNavigator = provider.getNavigator(ActivityNavigator.class);
         NavGraph navGraph = new NavGraph(new NavGraphNavigator(provider));
         HashMap<String, Destination> destination = AppConfig.getDestination();
@@ -29,12 +32,12 @@ public class NavGraphBuider {
                 navGraph.addDestination(fragmentDestination);
             } else {
                 ActivityNavigator.Destination activityDestination = activityNavigator.createDestination();
-                activityDestination.setComponentName(new ComponentName(QiApplication.getInstance().getPackageName(),value.className));
+                activityDestination.setComponentName(new ComponentName(QiApplication.getInstance().getPackageName(), value.className));
                 activityDestination.setId(value.id);
                 activityDestination.addDeepLink(value.pageUrl);
                 navGraph.addDestination(activityDestination);
             }
-            if (value.isStart){
+            if (value.isStart) {
                 navGraph.setStartDestination(value.id);
             }
         }

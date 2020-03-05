@@ -18,7 +18,7 @@ public class QiApplication extends Application {
         if (instance == null) {
             try {
                 Method method = Class.forName("android.app.ActivityThread").getDeclaredMethod("currentApplication");
-                instance = (QiApplication) method.invoke(null, null);
+                instance = (QiApplication) method.invoke(null, new  Object[]{});
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
