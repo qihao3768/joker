@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingTop="?attr/actionBarSize">
 
-    <com.seven.joker.view.BottomTabs
+    <com.seven.joker.view.QiBottomTabs
         android:id="@+id/nav_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

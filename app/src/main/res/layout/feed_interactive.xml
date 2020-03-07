@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="feed"
+            type="Feed" />
+
+        <import type="com.seven.joker.model.Feed" />
+
+        <import type="com.seven.joker.configs.StringConvert" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_45"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp_16"
+        android:paddingRight="@dimen/dp_16">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@{feed.ugc.likeCount>0?StringConvert.convertFeedUgc(feed.ugc.likeCount):null}"
+            android:textColor="@{feed.ugc.hasLiked?@color/theme:@color/black}"
+            android:textSize="@dimen/sp_14"
+            app:backgroundTint="@color/white"
+            app:icon="@{feed.ugc.hasLiked?@drawable/icon_cell_liked:@drawable/icon_cell_like}"
+            app:iconGravity="textStart"
+            app:iconPadding="@dimen/dp_4"
+            app:iconSize="@dimen/dp_20"
+            app:iconTint="@{feed.ugc.hasLiked?@color/theme:@color/black}"
+            tools:icon="@drawable/icon_cell_like"
+            tools:iconTint="@color/black"
+            tools:text="1000"
+            tools:textColor="@color/black" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/diss"
+            android:textColor="@{feed.ugc.hasdiss?@color/theme:@color/black}"
+            android:textSize="@dimen/sp_14"
+            app:backgroundTint="@color/white"
+            app:icon="@{feed.ugc.hasdiss?@drawable/icon_cell_dissed:@drawable/icon_cell_diss}"
+            app:iconGravity="textStart"
+            app:iconPadding="@dimen/dp_4"
+            app:iconSize="@dimen/dp_20"
+            app:iconTint="@{feed.ugc.hasdiss?@color/theme:@color/black}"
+            tools:icon="@drawable/icon_cell_diss"
+            tools:iconTint="@color/black"
+            tools:text="1000"
+            tools:textColor="@color/black" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@{feed.ugc.commentCount>0?StringConvert.convertFeedUgc(feed.ugc.commentCount):null}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_14"
+            app:backgroundTint="@color/white"
+            app:icon="@drawable/icon_cell_comment"
+            app:iconGravity="textStart"
+            app:iconPadding="@dimen/dp_4"
+            app:iconSize="@dimen/dp_20"
+            app:iconTint="@color/black"
+            tools:icon="@drawable/icon_cell_comment"
+            tools:icontint="@color/black"
+            tools:text="1000"
+            tools:textColor="@color/black" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@{feed.ugc.shareCount>0?StringConvert.convertFeedUgc(feed.ugc.shareCount):null}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_14"
+            app:backgroundTint="@color/white"
+            app:icon="@drawable/icon_cell_share"
+            app:iconGravity="textStart"
+            app:iconPadding="@dimen/dp_4"
+            app:iconSize="@dimen/dp_20"
+            app:iconTint="@color/black"
+            tools:icon="@drawable/icon_cell_share"
+            tools:icontint="@color/black"
+            tools:text="1000"
+            tools:textColor="@color/black" />
+
+
+    </LinearLayout>
+</layout>

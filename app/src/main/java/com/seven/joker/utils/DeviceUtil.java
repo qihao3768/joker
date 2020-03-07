@@ -9,23 +9,25 @@ import android.net.NetworkInfo;
 import android.os.Environment;
 import android.telephony.TelephonyManager;
 
+import com.seven.common.QiApplication;
+
 public class DeviceUtil {
-    public static int dp2px(Context context, float dpValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
+    public static int dp2px(float dpValue) {
+        final float scale = QiApplication.getInstance().getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
 
-    public static int px2dp(Context context, float pxValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
+    public static int px2dp(float pxValue) {
+        final float scale = QiApplication.getInstance().getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
     }
 
-    public static int deviceWidth(Context context) {
-        return context.getResources().getDisplayMetrics().widthPixels;
+    public static int deviceWidth() {
+        return QiApplication.getInstance().getResources().getDisplayMetrics().widthPixels;
     }
 
-    public static int deviceHeight(Context context) {
-        return context.getResources().getDisplayMetrics().heightPixels;
+    public static int deviceHeight() {
+        return QiApplication.getInstance().getResources().getDisplayMetrics().heightPixels;
     }
 
     public static boolean sdCardState() {

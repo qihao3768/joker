@@ -20,19 +20,19 @@ import com.seven.joker.utils.DeviceUtil;
 
 import java.util.List;
 
-public class BottomTabs extends BottomNavigationView {
+public class QiBottomTabs extends BottomNavigationView {
     private static int[] icons = new int[]{R.drawable.icon_tab_home, R.drawable.icon_tab_sofa, R.drawable.icon_tab_publish, R.drawable.icon_tab_find, R.drawable.icon_tab_mine};
 
-    public BottomTabs(Context context) {
+    public QiBottomTabs(Context context) {
         this(context, null);
     }
 
-    public BottomTabs(Context context, AttributeSet attrs) {
+    public QiBottomTabs(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
     @SuppressLint("RestrictedApi")
-    public BottomTabs(Context context, AttributeSet attrs, int defStyleAttr) {
+    public QiBottomTabs(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         BottomTab bottomTab = AppConfig.getBottomTabs();
         List<BottomTab.Tabs> tabs = bottomTab.tabs;
@@ -63,7 +63,7 @@ public class BottomTabs extends BottomNavigationView {
         //改变按钮尺寸
         for (int i = 0; i < tabs.size(); i++) {
             BottomTab.Tabs tab = tabs.get(i);
-            int iconSize = DeviceUtil.dp2px(getContext(), tab.size);
+            int iconSize = DeviceUtil.dp2px(tab.size);
             BottomNavigationMenuView menuView = (BottomNavigationMenuView) getChildAt(0);
             BottomNavigationItemView itemView = (BottomNavigationItemView) menuView.getChildAt(tab.index);
             itemView.setIconSize(iconSize);

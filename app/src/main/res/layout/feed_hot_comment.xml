@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="comment"
+            type="com.seven.joker.model.Comment" />
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
+
+        <import type="com.seven.joker.configs.StringConvert" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginRight="@dimen/dp_16"
+        android:background="@color/background"
+        android:padding="@dimen/dp_10">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_60"
+            android:layout_gravity="right|top"
+            android:layout_marginRight="@dimen/dp_10"
+            android:src="@drawable/icon_hot_comment" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:orientation="horizontal">
+
+                <com.seven.joker.view.QiImageView
+                    android:id="@+id/avatar"
+                    isCircle="@{true}"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    app:image_url="@{comment.author.avatar}"
+                    tools:src="@drawable/ic_launcher_foreground" />
+
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:text="@{comment.author.name}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_12"
+                    tools:text="抵制肖战" />
+
+                <Space
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@{comment.ugc.likeCount>0?StringConvert.convertFeedUgc(comment.ugc.likeCount):null}"
+                    android:textColor="@{comment.ugc.hasLiked?@color/theme:@color/black}"
+                    android:textSize="@dimen/sp_12"
+                    tools:text="1000" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_marginLeft="@dimen/dp_4"
+                    android:padding="@dimen/dp_2"
+                    android:src="@{comment.ugc.hasLiked?@drawable/icon_cell_liked:@drawable/icon_cell_like}"
+                    tools:src="@drawable/icon_cell_liked" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp_36"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{comment.commentText}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_14"
+                android:visibility="@{TextUtils.isEmpty(comment.commentText)?View.GONE:View.VISIBLE}"
+                tools:text="打倒饭圈恶毒文化，给青年树立正确价值观" />
+
+            <FrameLayout
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="@dimen/dp_80"
+                android:layout_marginTop="@dimen/dp_10">
+
+                <com.seven.joker.view.QiImageView
+                    isCircle="@{false}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@color/theme"
+                    app:image_url="@{comment.imageUrl}"
+                    tools:src="@drawable/ic_launcher_background" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_video_play"
+                    android:visibility="@{comment.commentType==2?View.VISIBLE:View.GONE}" />
+
+            </FrameLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+</layout>

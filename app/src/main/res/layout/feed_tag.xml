@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="tag"
+            type="String" />
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_8"
+        android:backgroundTint="@color/background"
+        android:orientation="horizontal"
+        android:text="@{tag}"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_12"
+        android:visibility="@{TextUtils.isEmpty(tag)?View.GONE:View.VISIBLE}"
+        app:cornerRadius="@dimen/dp_20"
+        app:icon="@drawable/icon_tag"
+        app:iconGravity="textStart"
+        app:iconPadding="@dimen/dp_4"
+        app:iconSize="@dimen/dp_12"
+        app:iconTint="@color/theme"
+        tools:text="七号开发者">
+
+    </com.google.android.material.button.MaterialButton>
+</layout>

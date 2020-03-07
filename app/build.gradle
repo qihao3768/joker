@@ -47,6 +47,9 @@ android {
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "_360"]
         }
     }
+    dataBinding{
+        enabled=true
+    }
 }
 
 dependencies {
@@ -61,6 +64,10 @@ dependencies {
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    implementation 'jp.wasabeef:glide-transformations:4.0.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     implementation 'com.alibaba:fastjson:1.2.59'
     //自定义注解处理器依赖
     implementation project(":annotation")

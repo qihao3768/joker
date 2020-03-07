@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.seven.joker.model.Feed" />
+
+        <variable
+            name="feed"
+            type="Feed" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp_10">
+
+        <include
+            layout="@layout/feed_author"
+            app:user="@{feed.author}" />
+
+        <include
+            layout="@layout/feed_body_text"
+            app:text="@{feed.feeds_text}" />
+
+        <com.seven.joker.view.QiImageView
+            android:id="@+id/feed_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_10"
+            tools:layout_height="380dp"
+            tools:layout_width="400dp" />
+
+        <include
+            layout="@layout/feed_tag"
+            app:tag="@{feed.activityText}" />
+
+        <include
+            layout="@layout/feed_hot_comment"
+            app:comment="@{feed.topComment}" />
+
+        <include
+            layout="@layout/feed_interactive"
+            app:feed="@{feed}" />
+    </LinearLayout>
+</layout>

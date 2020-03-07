@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="text"
+            type="String" />
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginRight="@dimen/dp_16"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:text="@{text}"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_16"
+        android:visibility="@{TextUtils.isEmpty(text)? View.GONE:View.VISIBLE}"
+        tools:text="安卓开发工程师的脱发斗争" />
+</layout>
