@@ -17,7 +17,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingTop="@dimen/dp_10">
-
         <include
             layout="@layout/feed_author"
             app:user="@{feed.author}" />
