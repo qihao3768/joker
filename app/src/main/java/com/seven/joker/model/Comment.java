@@ -1,5 +1,7 @@
 package com.seven.joker.model;
 
+import android.text.TextUtils;
+
 import androidx.annotation.Nullable;
 import androidx.databinding.BaseObservable;
 
@@ -41,4 +43,29 @@ public class Comment extends BaseObservable implements Serializable {
     public boolean hasLiked;
     public User author;
     public Ugc ugc;
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if (obj == null || !(obj instanceof Comment)) {
+            return false;
+        } else {
+            Comment newComment = (Comment) obj;
+            return id == newComment.id &&
+                    itemId == newComment.itemId &&
+                    commentId == newComment.commentId &&
+                    userId == newComment.userId &&
+                    commentType == newComment.commentType &&
+                    createTime == newComment.createTime &&
+                    commentCount == newComment.commentCount &&
+                    likeCount == newComment.likeCount &&
+                    TextUtils.equals(commentText, newComment.commentText) &&
+                    TextUtils.equals(imageUrl, newComment.imageUrl) &&
+                    TextUtils.equals(videoUrl, newComment.videoUrl) &&
+                    width == newComment.width &&
+                    height == newComment.height &&
+                    hasLiked == newComment.hasLiked &&
+                    (author != null && author.equals(newComment.author)) &&
+                    (ugc != null && ugc.equals(newComment.ugc));
+        }
+    }
 }

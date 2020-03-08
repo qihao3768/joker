@@ -9,6 +9,8 @@ import androidx.databinding.Bindable;
 import java.io.Serializable;
 
 public class Feed extends BaseObservable implements Serializable {
+    public static final int TYPE_IMAGE = 1;
+    public static final int TYPE_VIDEO = 2;
     /**
      * id : 364
      * itemId : 6739143063064549000
@@ -44,4 +46,29 @@ public class Feed extends BaseObservable implements Serializable {
     public Comment topComment;
     public Ugc ugc;
 
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if (obj == null || !(obj instanceof Feed)) {
+            return false;
+        } else {
+            Feed newFeed = (Feed) obj;
+            return id == newFeed.id &&
+                    itemId == newFeed.itemId &&
+                    itemType == newFeed.itemType &&
+                    createTime == newFeed.createTime &&
+                    duration == newFeed.duration &&
+                    TextUtils.equals(feeds_text, newFeed.feeds_text) &&
+                    authorId == newFeed.authorId &&
+                    TextUtils.equals(activityIcon, newFeed.activityIcon) &&
+                    TextUtils.equals(activityText, newFeed.activityText) &&
+                    width == newFeed.width &&
+                    height == newFeed.height &&
+                    TextUtils.equals(url, newFeed.url) &&
+                    TextUtils.equals(cover, newFeed.cover) &&
+                    (author != null && author.equals(newFeed.author)) &&
+                    (topComment != null && topComment.equals(newFeed.topComment)) &&
+                    (ugc != null && ugc.equals(newFeed.ugc));
+
+        }
+    }
 }

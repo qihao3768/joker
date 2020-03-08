@@ -9,7 +9,7 @@ import android.net.NetworkInfo;
 import android.os.Environment;
 import android.telephony.TelephonyManager;
 
-import com.seven.common.QiApplication;
+import com.seven.joker.configs.QiApplication;
 
 public class DeviceUtil {
     public static int dp2px(float dpValue) {

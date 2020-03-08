@@ -32,7 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/dp_10"
             tools:layout_height="380dp"
-            tools:layout_width="400dp" />
+            tools:layout_width="400dp"
+            tools:layout_marginLeft="16dp"/>
 
         <include
             layout="@layout/feed_tag"

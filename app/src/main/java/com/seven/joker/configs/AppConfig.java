@@ -4,7 +4,6 @@ import android.content.res.AssetManager;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
-import com.seven.common.QiApplication;
 import com.seven.joker.model.BottomTab;
 import com.seven.joker.model.Destination;
 

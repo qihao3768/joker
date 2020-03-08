@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -75,8 +77,14 @@ public class QiImageView extends AppCompatImageView {
             finalHeight = maxHeight;
             finalWidth = (int) (width / (height * 1.0f / finalHeight));
         }
-        ViewGroup.MarginLayoutParams marginParams = new ViewGroup.MarginLayoutParams(finalWidth, finalHeight);
-        marginParams.leftMargin = height > width ? DeviceUtil.dp2px(marginLeft) : 0;
+        ViewGroup.LayoutParams marginParams = getLayoutParams();
+        marginParams.width = finalWidth;
+        marginParams.height = finalHeight;
+        if (marginParams instanceof FrameLayout.LayoutParams) {
+            ((FrameLayout.LayoutParams) marginParams).leftMargin = height > width ? DeviceUtil.dp2px(marginLeft) : 0;
+        } else if (marginParams instanceof LinearLayout.LayoutParams) {
+            ((LinearLayout.LayoutParams) marginParams).leftMargin = height > width ? DeviceUtil.dp2px(marginLeft) : 0;
+        }
         setLayoutParams(marginParams);
     }
 

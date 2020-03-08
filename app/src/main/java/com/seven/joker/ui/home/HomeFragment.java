@@ -12,27 +12,35 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.paging.PagedListAdapter;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.seven.annotation.FragmentDestination;
 import com.seven.joker.R;
+import com.seven.joker.model.Feed;
+import com.seven.joker.view.BaseFragment;
 
 @FragmentDestination(pageUrl = "main/tabs/home",isStart = true,isLogin = false)
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment<Feed,HomeViewModel> {
+    @Override
+    protected void afterCreateView() {
 
-    private HomeViewModel homeViewModel;
+    }
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
+    @Override
+    public PagedListAdapter getAdapter() {
+        String feedType=getArguments()==null?"all":getArguments().getString("feedType");
+        return new FeedAdapter(getContext(),feedType);
+    }
+
+    @Override
+    public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+
+    }
+
+    @Override
+    public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+
     }
 }

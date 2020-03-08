@@ -1,2 +1,2 @@
-include ':app', ':annotation', ':compiler', ':network', ':common'
+include ':app', ':annotation', ':compiler'
 rootProject.name='Joker'

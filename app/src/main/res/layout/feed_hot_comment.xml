@@ -107,6 +107,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:background="@color/theme"
+                    android:visibility="@{TextUtils.isEmpty(comment.imageUrl)?View.GONE:View.VISIBLE}"
                     app:image_url="@{comment.imageUrl}"
                     tools:src="@drawable/ic_launcher_background" />
 

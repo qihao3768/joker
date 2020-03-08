@@ -48,4 +48,30 @@ public class User extends BaseObservable implements Serializable {
     public int feedCount;
     public boolean hasFollow;
 
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if (obj == null || !(obj instanceof User)) {
+            return false;
+        } else {
+            User newUser = (User) obj;
+            return id == newUser.id &&
+                    userId == newUser.userId &&
+                    TextUtils.equals(name, newUser.name) &&
+                    TextUtils.equals(avatar, newUser.avatar) &&
+                    TextUtils.equals(description, newUser.description) &&
+                    likeCount == newUser.likeCount &&
+                    topCommentCount == newUser.topCommentCount &&
+                    followCount == newUser.followCount &&
+                    followerCount == newUser.followerCount &&
+                    TextUtils.equals(qqOpenId, newUser.qqOpenId) &&
+                    expires_time == newUser.expires_time &&
+                    score == newUser.score &&
+                    historyCount == newUser.historyCount &&
+                    commentCount == newUser.commentCount &&
+                    favoriteCount == newUser.favoriteCount &&
+                    feedCount == newUser.feedCount &&
+                    hasFollow == newUser.hasFollow;
+        }
+    }
+
 }
