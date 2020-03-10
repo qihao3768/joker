@@ -1,4 +1,4 @@
-package com.seven.joker.view;
+package com.seven.joker.base;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
@@ -8,16 +8,16 @@ import androidx.paging.DataSource;
 import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
 
-
 public abstract class AbsViewModel<T> extends ViewModel {
     private DataSource dataSource;
     private LiveData<PagedList<T>> pageData;
     private MutableLiveData<Boolean> boundaryPageData = new MutableLiveData<>();
+    protected PagedList.Config config;
 
     public AbsViewModel() {
-        PagedList.Config config = new PagedList.Config.Builder()
-                .setPageSize(10)
-                .setInitialLoadSizeHint(10)
+         config = new PagedList.Config.Builder()
+                .setPageSize(20)
+                .setInitialLoadSizeHint(20)
                 .build();
         DataSource.Factory factory = new DataSource.Factory() {
             @NonNull
@@ -62,5 +62,6 @@ public abstract class AbsViewModel<T> extends ViewModel {
     }
 
     public abstract DataSource createDataSource();
+
 
 }

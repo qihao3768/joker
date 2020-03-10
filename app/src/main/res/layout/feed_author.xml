@@ -26,7 +26,7 @@
             android:layout_height="@dimen/dp_40"
             app:image_url="@{user.avatar}"
             app:isCircle="@{true}"
-            tools:src="@drawable/ic_launcher_background" />
+            tools:src="@drawable/icon_tag" />
 
         <TextView
             android:layout_width="match_parent"

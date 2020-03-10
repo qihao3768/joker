@@ -10,6 +10,7 @@ import androidx.navigation.NavGraphNavigator;
 import androidx.navigation.NavigatorProvider;
 import androidx.navigation.fragment.FragmentNavigator;
 
+import com.seven.joker.QiApplication;
 import com.seven.joker.model.Destination;
 
 import java.util.HashMap;

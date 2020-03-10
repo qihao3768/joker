@@ -1,4 +1,4 @@
-package com.seven.joker.configs;
+package com.seven.joker;
 
 import android.app.Application;
 import android.content.Context;

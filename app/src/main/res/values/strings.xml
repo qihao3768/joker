@@ -8,4 +8,5 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="diss">踩</string>
+    <string name="login_text">QQ快捷登录</string>
 </resources>

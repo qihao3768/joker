@@ -1,4 +1,4 @@
-package com.seven.joker.configs;
+package com.seven.joker.utils;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -8,7 +8,7 @@ import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 
-public class StringConvert {
+public class ConvertUtil {
 
     public static String convertFeedUgc(int count) {
         if (count < 10000) {

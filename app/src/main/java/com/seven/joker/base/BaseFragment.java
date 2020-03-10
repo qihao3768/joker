@@ -1,4 +1,4 @@
-package com.seven.joker.view;
+package com.seven.joker.base;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,21 +15,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.seven.joker.databinding.RefreshViewBinding;
+import com.seven.joker.view.EmptyView;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 public abstract class BaseFragment<T,M extends AbsViewModel<T>> extends Fragment implements OnRefreshListener, OnLoadMoreListener {
-    private RefreshViewBinding binding;
-    private RecyclerView recyclerView;
-    private SmartRefreshLayout refreshLayout;
-    private EmptyView emptyView;
-    private PagedListAdapter<T, RecyclerView.ViewHolder> adapter;
+    protected RefreshViewBinding binding;
+    protected RecyclerView recyclerView;
+    protected SmartRefreshLayout refreshLayout;
+    protected EmptyView emptyView;
+    protected PagedListAdapter<T, RecyclerView.ViewHolder> adapter;
     protected M viewModel;
 
     @Nullable
@@ -49,15 +49,10 @@ public abstract class BaseFragment<T,M extends AbsViewModel<T>> extends Fragment
         recyclerView.setItemAnimator(null);
         adapter = getAdapter();
         recyclerView.setAdapter(adapter);
-        afterCreateView();
+        genericViewModel();
         return binding.getRoot();
     }
-
-    protected abstract void afterCreateView();
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    private void genericViewModel() {
         //利用 子类传递的 泛型参数实例化出absViewModel 对象。
         ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
         Type[] arguments = type.getActualTypeArguments();
@@ -73,6 +68,7 @@ public abstract class BaseFragment<T,M extends AbsViewModel<T>> extends Fragment
             viewModel.getBoundaryPageData().observe(this, hasData -> finishRefresh(hasData));
         }
     }
+
 
     public void submitList(PagedList<T> pagedList) {
         if (pagedList.size() > 0) {

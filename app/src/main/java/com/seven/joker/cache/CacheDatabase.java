@@ -1,10 +1,10 @@
-package com.seven.joker.network;
+package com.seven.joker.cache;
 
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.seven.joker.configs.QiApplication;
+import com.seven.joker.QiApplication;
 
 @Database(entities = {Cache.class}, version = 1, exportSchema = false)
 public abstract class CacheDatabase extends RoomDatabase {

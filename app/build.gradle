@@ -100,4 +100,7 @@ dependencies {
     //bugly崩溃上报、热修复
     implementation 'com.tencent.bugly:crashreport:3.1.7'
 
+    //QQ快捷登录
+    implementation files('libs/open_sdk_r6140_lite.jar')
+
 }

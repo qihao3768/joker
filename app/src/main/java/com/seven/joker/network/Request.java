@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.arch.core.executor.ArchTaskExecutor;
 
 
+import com.seven.joker.cache.CacheManager;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -25,8 +26,6 @@ import java.util.Map;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
-
-//import com.mooc.libnetwork.cache.CacheManager;
 
 public abstract class Request<T, R extends Request> implements Cloneable {
     protected String mUrl;
@@ -53,7 +52,6 @@ public abstract class Request<T, R extends Request> implements Cloneable {
     }
 
     public Request(String url) {
-        //user/list
         mUrl = url;
     }
 

@@ -1,4 +1,4 @@
-package com.seven.joker.network;
+package com.seven.joker.cache;
 
 import androidx.room.Dao;
 import androidx.room.Delete;

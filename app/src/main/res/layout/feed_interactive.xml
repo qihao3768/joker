@@ -11,7 +11,7 @@
 
         <import type="com.seven.joker.model.Feed" />
 
-        <import type="com.seven.joker.configs.StringConvert" />
+        <import type="com.seven.joker.utils.ConvertUtil" />
     </data>
 
     <LinearLayout
@@ -25,7 +25,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@{feed.ugc.likeCount>0?StringConvert.convertFeedUgc(feed.ugc.likeCount):null}"
+            android:text="@{feed.ugc.likeCount>0?ConvertUtil.convertFeedUgc(feed.ugc.likeCount):null}"
             android:textColor="@{feed.ugc.hasLiked?@color/theme:@color/black}"
             android:textSize="@dimen/sp_14"
             app:backgroundTint="@color/white"
@@ -61,7 +61,7 @@
             android:layout_width="@dimen/dp_0"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@{feed.ugc.commentCount>0?StringConvert.convertFeedUgc(feed.ugc.commentCount):null}"
+            android:text="@{feed.ugc.commentCount>0?ConvertUtil.convertFeedUgc(feed.ugc.commentCount):null}"
             android:textColor="@color/black"
             android:textSize="@dimen/sp_14"
             app:backgroundTint="@color/white"
@@ -79,7 +79,7 @@
             android:layout_width="@dimen/dp_0"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@{feed.ugc.shareCount>0?StringConvert.convertFeedUgc(feed.ugc.shareCount):null}"
+            android:text="@{feed.ugc.shareCount>0?ConvertUtil.convertFeedUgc(feed.ugc.shareCount):null}"
             android:textColor="@color/black"
             android:textSize="@dimen/sp_14"
             app:backgroundTint="@color/white"
