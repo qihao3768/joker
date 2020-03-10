@@ -87,7 +87,6 @@ public class HomeViewModel extends AbsViewModel<Feed> {
                 }
             });
         }
-
         try {
             Request netRequest = withCache ? request.clone() : request;
             netRequest.cacheStrategy(key == 0 ? Request.NET_CACHE : Request.NET_ONLY);
