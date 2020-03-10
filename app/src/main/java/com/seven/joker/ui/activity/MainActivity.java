@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return false;
             }
         }
-
         navController.navigate(menuItem.getItemId());
         return !TextUtils.isEmpty(menuItem.getTitle());
     }
