@@ -24,4 +24,16 @@
         <item name="android:elevation">0dp</item>
     </style>
 
+
+    <declare-styleable name="viewOutLineStrategy">
+        <attr name="radius" format="dimension" />
+        <attr name="radiusSide" format="enum">
+            <enum name="all" value="0" />
+            <enum name="left" value="1" />
+            <enum name="top" value="2" />
+            <enum name="right" value="3" />
+            <enum name="bottom" value="4" />
+        </attr>
+    </declare-styleable>
+
 </resources>

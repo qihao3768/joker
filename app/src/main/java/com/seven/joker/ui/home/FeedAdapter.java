@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.ViewDataBinding;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,7 +20,7 @@ public class FeedAdapter extends PagedListAdapter<Feed, FeedAdapter.ViewHolder> 
     private Context context;
     private String category;
 
-    public FeedAdapter(Context context,String category) {
+    public FeedAdapter(Context context, String category) {
         super(new DiffUtil.ItemCallback<Feed>() {
             @Override
             public boolean areItemsTheSame(@NonNull Feed oldItem, @NonNull Feed newItem) {
@@ -71,11 +72,13 @@ public class FeedAdapter extends PagedListAdapter<Feed, FeedAdapter.ViewHolder> 
             if (binding instanceof FeedTypeImageBinding) {
                 FeedTypeImageBinding imageBinding = (FeedTypeImageBinding) binding;
                 imageBinding.setFeed(item);
-                imageBinding.feedImage.bindData(item.width,item.height,16,item.cover);
+                imageBinding.feedImage.bindData(item.width, item.height, 16, item.cover);
+                imageBinding.setLifecycleOwner((LifecycleOwner) context);
             } else if (binding instanceof FeedTypeVideoBinding) {
                 FeedTypeVideoBinding videoBinding = (FeedTypeVideoBinding) binding;
                 videoBinding.setFeed(item);
-                videoBinding.playerView.bindData(category,item.width,item.height,item.cover,item.url);
+                videoBinding.playerView.bindData(category, item.width, item.height, item.cover, item.url);
+                videoBinding.setLifecycleOwner((LifecycleOwner) context);
             }
 
         }

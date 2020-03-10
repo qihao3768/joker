@@ -46,6 +46,14 @@ public class Feed extends BaseObservable implements Serializable {
     public Comment topComment;
     public Ugc ugc;
 
+    @Bindable
+    public Ugc getUgc() {
+        if (ugc == null) {
+            ugc = new Ugc();
+        }
+        return ugc;
+    }
+
     @Override
     public boolean equals(@Nullable Object obj) {
         if (obj == null || !(obj instanceof Feed)) {
