@@ -12,6 +12,7 @@
         <variable
             name="owner"
             type="androidx.lifecycle.LifecycleOwner" />
+        <import type="android.content.Context"/>
 
         <import type="com.seven.joker.model.Feed" />
 
@@ -88,6 +89,7 @@
             android:layout_width="@dimen/dp_0"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:onClick="@{()->InteractionPresenter.openShare(context,feed)}"
             android:text="@{feed.ugc.shareCount>0?ConvertUtil.convertFeedUgc(feed.ugc.shareCount):null}"
             android:textColor="@color/black"
             android:textSize="@dimen/sp_14"

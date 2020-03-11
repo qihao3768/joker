@@ -79,7 +79,6 @@ public class HomeViewModel extends AbsViewModel<Feed> {
             request.execute(new JsonCallback<List<Feed>>() {
                 @Override
                 public void onCacheSuccess(ApiResponse<List<Feed>> response) {
-                    //List<Feed> body = response.body;
                     MutableDataSource dataSource = new MutableDataSource<Integer, Feed>();
                     dataSource.data.addAll(response.body);
                     PagedList pagedList = dataSource.buildNewPagedList(config);

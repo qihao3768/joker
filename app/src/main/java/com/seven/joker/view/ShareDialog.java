@@ -45,6 +45,7 @@ public class ShareDialog extends AlertDialog {
         super.onCreate(savedInstanceState);
 
         RoundFrameLayout layout = new RoundFrameLayout(getContext());
+        layout.setBackgroundColor(Color.WHITE);
         layout.setViewOutLine(DeviceUtil.dp2px(20), ViewHelper.RADIUS_TOP);
         RecyclerView gridView = new RecyclerView(getContext());
         gridView.setLayoutManager(new GridLayoutManager(getContext(), 4));
@@ -62,10 +63,12 @@ public class ShareDialog extends AlertDialog {
 
         queryShareItems();
     }
-    public void setShareContent(String shareContent){
-        this.shareContent=shareContent;
+
+    public void setShareContent(String shareContent) {
+        this.shareContent = shareContent;
     }
-    public void setShareitemClickListener(View.OnClickListener listener){
+
+    public void setShareitemClickListener(View.OnClickListener listener) {
         this.listener = listener;
     }
 
@@ -117,7 +120,7 @@ public class ShareDialog extends AlertDialog {
                     intent.setComponent(new ComponentName(pkgName, clsName));
                     intent.putExtra(Intent.EXTRA_TEXT, shareContent);
                     getContext().startActivity(intent);
-                    if (listener!=null){
+                    if (listener != null) {
                         listener.onClick(v);
                     }
                 }

@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void login() {
         if (tencent == null) {
-            tencent = Tencent.createInstance("", getApplicationContext());
+            tencent = Tencent.createInstance("101860444", getApplicationContext());
         }
 
         tencent.login(this, "all", loginListener);

@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer;
 
 import com.alibaba.fastjson.JSONObject;
 import com.seven.joker.QiApplication;
+import com.seven.joker.model.Comment;
 import com.seven.joker.model.Feed;
 import com.seven.joker.model.User;
 import com.seven.joker.network.ApiResponse;
@@ -26,6 +27,7 @@ public class InteractionPresenter {
     private static final String URL_TOGGLE_FEED_LIKE = "/ugc/toggleFeedLike";
     private static final String URL_TOGGLE_FEED_DISS = "/ugc/dissFeed";
     private static final String URL_SHARE = "/ugc/increaseShareCount";
+    private static final String URL_TOGGLE_COMMENT_LIKE = "/ugc/toggleCommentLike";
 
     public static void toggleFeedLike(LifecycleOwner owner, Feed feed) {
         if (!isLogin(owner, new Observer<User>() {
@@ -107,6 +109,34 @@ public class InteractionPresenter {
             }
         });
         shareDialog.show();
+    }
+
+    public static void toggleCommentLike(LifecycleOwner owner, Comment comment){
+        if (!isLogin(owner, new Observer<User>() {
+            @Override
+            public void onChanged(User user) {
+                toggleCommentLikeInternal(comment);
+            }
+        })){
+        }else {
+            toggleCommentLikeInternal(comment);
+        }
+
+    }
+
+    private static void toggleCommentLikeInternal(Comment comment) {
+        ApiService.get(URL_TOGGLE_COMMENT_LIKE)
+                .addParam("commentId", comment.commentId)
+                .addParam("userId", UserManager.get().getUserId())
+                .execute(new JsonCallback<JSONObject>() {
+                    @Override
+                    public void onSuccess(ApiResponse<JSONObject> response) {
+                        if (response.body != null) {
+                            boolean hasLiked = response.body.getBooleanValue("hasLiked");
+                            comment.getUgc().setHasLiked(hasLiked);
+                        }
+                    }
+                });
     }
 
 

@@ -14,6 +14,12 @@
         <import type="android.view.View" />
 
         <import type="com.seven.joker.utils.ConvertUtil" />
+
+        <variable
+            name="owner"
+            type="androidx.lifecycle.LifecycleOwner" />
+
+        <import type="com.seven.joker.ui.home.InteractionPresenter" />
     </data>
 
     <FrameLayout
@@ -80,6 +86,7 @@
                     android:layout_width="@dimen/dp_20"
                     android:layout_height="@dimen/dp_20"
                     android:layout_marginLeft="@dimen/dp_4"
+                    android:onClick="@{()->InteractionPresenter.toggleCommentLike(owner,comment)}"
                     android:padding="@dimen/dp_2"
                     android:src="@{comment.ugc.hasLiked?@drawable/icon_cell_liked:@drawable/icon_cell_like}"
                     tools:src="@drawable/icon_cell_liked" />

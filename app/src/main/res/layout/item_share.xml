@@ -7,8 +7,8 @@
 
     <com.seven.joker.view.QiImageView
         android:id="@+id/share_icon"
-        android:layout_width="@dimen/dp_80"
-        android:layout_height="@dimen/dp_80"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
         android:layout_gravity="center"
         tools:src="@drawable/icon_jetpack" />
 

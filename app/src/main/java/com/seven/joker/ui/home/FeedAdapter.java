@@ -15,10 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.seven.joker.databinding.FeedTypeImageBinding;
 import com.seven.joker.databinding.FeedTypeVideoBinding;
 import com.seven.joker.model.Feed;
+import com.seven.joker.view.QiPlayerView;
 
 public class FeedAdapter extends PagedListAdapter<Feed, FeedAdapter.ViewHolder> {
     private Context context;
     private String category;
+    public QiPlayerView qiPlayerView;
 
     public FeedAdapter(Context context, String category) {
         super(new DiffUtil.ItemCallback<Feed>() {
@@ -78,9 +80,17 @@ public class FeedAdapter extends PagedListAdapter<Feed, FeedAdapter.ViewHolder> 
                 FeedTypeVideoBinding videoBinding = (FeedTypeVideoBinding) binding;
                 videoBinding.setFeed(item);
                 videoBinding.playerView.bindData(category, item.width, item.height, item.cover, item.url);
+                qiPlayerView = videoBinding.playerView;
                 videoBinding.setLifecycleOwner((LifecycleOwner) context);
             }
+        }
 
+        public boolean isVideoItem() {
+            return binding instanceof FeedTypeVideoBinding;
+        }
+
+        public QiPlayerView getQiPlayerView() {
+            return qiPlayerView;
         }
     }
 }

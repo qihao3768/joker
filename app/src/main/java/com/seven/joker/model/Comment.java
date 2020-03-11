@@ -44,6 +44,13 @@ public class Comment extends BaseObservable implements Serializable {
     public User author;
     public Ugc ugc;
 
+    public Ugc getUgc() {
+        if (ugc == null) {
+            ugc = new Ugc();
+        }
+        return ugc;
+    }
+
     @Override
     public boolean equals(@Nullable Object obj) {
         if (obj == null || !(obj instanceof Comment)) {
