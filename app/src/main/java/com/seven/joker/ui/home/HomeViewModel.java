@@ -28,6 +28,7 @@ public class HomeViewModel extends AbsViewModel<Feed> {
     private volatile boolean withCache = true;
     private MutableLiveData<PagedList<Feed>> cacheLiveData = new MutableLiveData<>();
     private AtomicBoolean loadAfter = new AtomicBoolean(false);
+    private String mFeedType;
 
 
     ItemKeyedDataSource<Integer, Feed> dataSource = new ItemKeyedDataSource<Integer, Feed>() {
@@ -54,6 +55,13 @@ public class HomeViewModel extends AbsViewModel<Feed> {
         }
     };
 
+
+    public void setFeedType(String feedType) {
+
+        mFeedType = feedType;
+    }
+
+
     @Override
     public DataSource createDataSource() {
         return dataSource;
@@ -64,11 +72,11 @@ public class HomeViewModel extends AbsViewModel<Feed> {
     }
 
     private void loadData(int key, ItemKeyedDataSource.LoadCallback<Feed> callback) {
-        if (key>0){
+        if (key > 0) {
             loadAfter.set(true);
         }
         Request request = ApiService.get("/feeds/queryHotFeedsList")
-                .addParam("feedType", null)
+                .addParam("feedType", mFeedType)
                 .addParam("userId", 0)//todo:UserManager.get().getUserId()
                 .addParam("feedId", key)
                 .addParam("pageCount", 10)
@@ -100,7 +108,7 @@ public class HomeViewModel extends AbsViewModel<Feed> {
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
-        Log.e("loadData", "loadData: key"+key );
+        Log.e("loadData", "loadData: key" + key);
 
     }
 

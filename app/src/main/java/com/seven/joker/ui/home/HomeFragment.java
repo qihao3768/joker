@@ -23,6 +23,16 @@ import java.util.List;
 @FragmentDestination(pageUrl = "main/tabs/home", isStart = true, isLogin = false)
 public class HomeFragment extends BaseFragment<Feed, HomeViewModel> {
     private PageListPlayDetector playDetector;
+    private String feedType;
+
+
+    public static HomeFragment newInstance(String feedType) {
+        Bundle args = new Bundle();
+        args.putString("feedType", feedType);
+        HomeFragment fragment = new HomeFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -33,17 +43,17 @@ public class HomeFragment extends BaseFragment<Feed, HomeViewModel> {
             }
         });
         playDetector = new PageListPlayDetector(this, recyclerView);
-
+        viewModel.setFeedType(feedType);
     }
 
     @Override
     public PagedListAdapter getAdapter() {
-        String feedType = getArguments() == null ? "all" : getArguments().getString("feedType");
-        return new FeedAdapter(getContext(), feedType){
+        feedType = getArguments() == null ? "all" : getArguments().getString("feedType");
+        return new FeedAdapter(getContext(), feedType) {
             @Override
             public void onViewAttachedToWindow(@NonNull ViewHolder holder) {
                 super.onViewAttachedToWindow(holder);
-                if (holder.isVideoItem()){
+                if (holder.isVideoItem()) {
                     playDetector.addTarget(holder.getQiPlayerView());
                 }
             }
@@ -62,7 +72,6 @@ public class HomeFragment extends BaseFragment<Feed, HomeViewModel> {
         viewModel.loadAfter(feed.id, new ItemKeyedDataSource.LoadCallback<Feed>() {
             @Override
             public void onResult(@NonNull List<Feed> data) {
-                Log.e("qihao", "onLoadMore 6666" + data.toString());
                 PagedList.Config config = adapter.getCurrentList().getConfig();
                 if (data != null && data.size() > 0) {
                     MutableDataSource dataSource = new MutableDataSource();
@@ -81,11 +90,28 @@ public class HomeFragment extends BaseFragment<Feed, HomeViewModel> {
         viewModel.getDataSource().invalidate();
     }
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden) {
+            playDetector.onPause();
+        } else {
+            playDetector.onResume();
+        }
+    }
 
     @Override
     public void onResume() {
-        playDetector.onResume();
         super.onResume();
+        if (getParentFragment() != null) {
+            if (getParentFragment().isVisible() && isVisible()) {
+                playDetector.onResume();
+            }
+        } else {
+            if (isVisible()) {
+                playDetector.onResume();
+            }
+        }
     }
 
     @Override

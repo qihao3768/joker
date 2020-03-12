@@ -7,16 +7,20 @@ import com.alibaba.fastjson.TypeReference;
 import com.seven.joker.QiApplication;
 import com.seven.joker.model.BottomTab;
 import com.seven.joker.model.Destination;
+import com.seven.joker.model.SofaTab;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 public class AppConfig {
     private static HashMap<String, Destination> destination;
     private static BottomTab bottomTabs;
+    private static SofaTab sofaTab;
 
     public static HashMap<String, Destination> getDestination() {
         if (destination == null) {
@@ -33,6 +37,20 @@ public class AppConfig {
             bottomTabs = JSON.parseObject(content, BottomTab.class);
         }
         return bottomTabs;
+    }
+
+    public static SofaTab getSofaTab() {
+        if (sofaTab == null) {
+            String content = parseFile("sofa.json");
+            sofaTab = JSON.parseObject(content, SofaTab.class);
+            Collections.sort(sofaTab.tabs, new Comparator<SofaTab.Tabs>() {
+                @Override
+                public int compare(SofaTab.Tabs o1, SofaTab.Tabs o2) {
+                    return o1.index < o2.index ? -1 : 1;
+                }
+            });
+        }
+        return sofaTab;
     }
 
 

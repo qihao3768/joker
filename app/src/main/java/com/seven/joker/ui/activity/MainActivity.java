@@ -12,6 +12,7 @@ import com.seven.joker.configs.NavGraphBuider;
 import com.seven.joker.model.Destination;
 import com.seven.joker.model.User;
 import com.seven.joker.ui.login.UserManager;
+import com.seven.joker.utils.StatusBar;
 import com.seven.joker.view.QiBottomTabs;
 
 import androidx.annotation.NonNull;
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.AppTheme);
+        StatusBar.fitSystemBar(this);
         setContentView(R.layout.activity_main);
         navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(this);
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         while (iterator.hasNext()) {
             Map.Entry<String, Destination> entry = iterator.next();
             Destination value = entry.getValue();
-            if (value!=null&& !UserManager.get().isLogin()&&value.isLogin&&value.id==menuItem.getItemId()){
+            if (value != null && !UserManager.get().isLogin() && value.isLogin && value.id == menuItem.getItemId()) {
                 UserManager.get().login(this).observe(this, new Observer<User>() {
                     @Override
                     public void onChanged(User user) {
